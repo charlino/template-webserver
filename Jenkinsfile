@@ -22,12 +22,10 @@ pipeline {
                 sshagent(['server-key']) {
                      sh 'scp -o StrictHostKeyChecking=no -i $SSH_CRED webapp.zip ubuntu@35.183.236.33:/home/ubuntu'
                      sshagent(['server-key']) {
-                     sh '''
-                     $CONNECT << EOF
-                     sudo apt install zip -y
-                     sudo rm -rf /var/www/html/
-                     sudo mkdir /var/www/html/
-                     sudo unzip webapp.zip -d /var/www/html/
+                     sh '$CONNECT "sudo apt install zip -y"'
+                     sh '$CONNECT "sudo rm -rf /var/www/html/"'
+                     sh '$CONNECT "sudo mkdir /var/www/html/"'
+                     sh '$CONNECT "sudo unzip webapp.zip -d /var/www/html/"'
                      EOF
                      '''
 }
