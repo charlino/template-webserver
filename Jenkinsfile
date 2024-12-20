@@ -20,7 +20,7 @@ pipeline {
             steps {
                 echo 'Deploying app'
                 sshagent(['server-key']) {
-                    sh 'scp -o StrictHostKeyChecking=no -i $SSH_CRED webapp.zip ubuntu@35.183.236.33:/home/ubuntu'
+                    sh 'scp -o StrictHostKeyChecking=no -i $SSH_CRED webapp.zip ubuntu@ec2-35-183-236-33.ca-central-1.compute.amazonaws.com:/home/ubuntu'
                     sh '$CONNECT "sudo apt install zip -y"'
                     sh '$CONNECT "sudo rm -rf /var/www/html/"'
                     sh '$CONNECT "sudo mkdir /var/www/html/"'
