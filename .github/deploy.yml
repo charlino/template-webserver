@@ -3,7 +3,7 @@ name: Deploy HTML to EC2
 on:
   push:
     branches:
-      - github-action # Change to your branch that has the .github/workflows folder
+      - githubaction # Change to your branch that has the .github/workflows folder
 
 jobs:
   deploy:
