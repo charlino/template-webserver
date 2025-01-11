@@ -1,0 +1,17 @@
+name: Deploy HTML to EC2
+
+on:
+  push:
+    branches:
+      - git-action # Change to your branch that has the .github/workflows folder
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: List working directory contents
+        run: ls -la
