@@ -18,7 +18,7 @@ pipeline {
         stage('artifact') {
             steps {
                 echo 'pushing artifact to nexus'
-                sh "curl -u admin:password --upload-file webapp.zip http://15.222.8.55:8081:8081/repository/webapp/webapp.zip"
+                sh "curl -u admin:password --upload-file webapp.zip http://15.222.8.55:8081/repository/webapp/webapp.zip"
                 
             }
         }
@@ -26,7 +26,7 @@ pipeline {
             steps {
                 echo 'Deploying app'
                 sshagent(['server-key']) {
-                    sh '$CONNECT "curl -u admin:admin123 -O http://15.222.8.55:8081:8081/repository/webapp/webapp.zip"'
+                    sh '$CONNECT "curl -u admin:admin123 -O http://15.222.8.55:8081/repository/webapp/webapp.zip"'
                     sh '$CONNECT "sudo apt install zip -y"'
                     sh '$CONNECT "sudo rm -rf /var/www/html/"'
                     sh '$CONNECT "sudo mkdir /var/www/html/"'
